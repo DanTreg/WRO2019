@@ -9,7 +9,15 @@ export function getBp(){
 
 export function createNewBp(){
     fetch("http://localhost:9000/read_json",{
-        method:'PUT'
+        method:'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            r:false,
+            g:false,
+            w:false,
+            y:false,
+            b:false
+        })
     })
         .then(res => {return(res)});
 };
