@@ -1,26 +1,24 @@
 const mongoose = require("mongoose")
 
-const Place = {
-   Color: Number,
-   Position: Number
+const modelTemp = {
+   firstPlace: Number,
+   secondPlace: Number,
+   thirdPlace: Number,
+   fourthPlace: Number,
+   fifthPlace: Number,
+   sixthPlace: Number,
+   seventhPlace: Number,
+   eightsPlace: Number,
+   ninethPlace: Number,
+
+
 }
-
-
-
-const Row = {
-   firstPlace: Place,
-   secondPlace: Place,
-   thirdPlace: Place
-}
-
 
 const ballPlaceSchema = mongoose.Schema({
    date: Date,
    active: Boolean,
    _id: mongoose.Schema.Types.ObjectId,
-   firstRow: Row,
-   secondRow: Row,
-   thirdRow: Row
+   temp: modelTemp
 
 })
 

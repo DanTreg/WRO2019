@@ -12,7 +12,7 @@ export function createNewBp(){
         method:'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-            r:false,
+            r:true,
             g:false,
             w:false,
             y:false,

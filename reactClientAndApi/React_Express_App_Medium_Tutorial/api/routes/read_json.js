@@ -12,17 +12,15 @@ const tools = require("./tools.js")
 router.post("/",  function(req, res){
 
     console.log(req.body)
-
-
+    
+    var varArr = tools.leaveOnlyVallible(req.body)
     var DateNow = new Date();
 
     const BallsPlace = new BallsPlaceModel({
         _id: new mongoose.Types.ObjectId(),
         date : DateNow,
         active: false,
-        firstRow:{firstPlace:{Color:0,Position:0},secondPlace:{Color:0,Position:1},thirdPlace:{Color:0,Position:2}},
-        secondRow:{firstPlace:{Color:0,Position:3},secondPlace:{Color:0,Position:4},thirdPlace:{Color:0,Position:5}},
-        thirdRow:{firstPlace:{Color:0,Position:6},secondPlace:{Color:0,Position:7},thirdPlace:{Color:0,Position:8}}
+        temp: tools.randomiseTemp(varArr) 
     }
     )
     BallsPlace.save().then(result =>{
