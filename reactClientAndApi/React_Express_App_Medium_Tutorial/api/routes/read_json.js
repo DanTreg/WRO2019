@@ -21,8 +21,7 @@ router.post("/",  function(req, res){
         date : DateNow,
         active: false,
         temp: tools.randomiseTemp(varArr) 
-    }
-    )
+    })
     BallsPlace.save().then(result =>{
         console.log(result)
     
@@ -34,18 +33,19 @@ router.post("/",  function(req, res){
 
 router.get("/",  function(req, res, next) {
 
-
     BallsPlaceModel.find()
     .exec()
     .then(docs => {
-        var sorted = _.sortBy(docs, "date").reverse();
-        var activeModel = sorted[0]
-        tools.activeAllFalse(sorted)
-        tools.makeAllFalse()
-        tools.replaceActive(activeModel)
-        var finalModel = tools.convertModel(activeModel)
-        res.json(finalModel).send()
+    var sorted = _.sortBy(docs, "date").reverse();
+    var activeModel = sorted[0]
+    tools.activeAllFalse(sorted)
+    tools.makeAllFalse()
+    tools.replaceInfo(activeModel, "Active")
+    var finalModel = tools.convertModel(activeModel)
+    console.log(activeModel)
+    res.json(finalModel).send()
     })
+    
 });
 
 module.exports = router;

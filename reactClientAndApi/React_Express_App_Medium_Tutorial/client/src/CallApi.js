@@ -13,8 +13,8 @@ export function createNewBp(){
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
             r:true,
-            g:false,
-            w:false,
+            g:true,
+            w:true,
             y:false,
             b:false
         })

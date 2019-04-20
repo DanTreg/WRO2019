@@ -1,5 +1,6 @@
 const filename = '../models/BallsPlaceModel'
 const BallsPlaceModel = require(filename)
+const ManufacterModel = require("../models/ManufacterModel")
 const mongoose = require("mongoose")
 const _ = require("lodash")
 const Enums = require("../models/Enums.js")
@@ -35,8 +36,44 @@ module.exports = {
         });
 
     },
+    convertModelToRoadController:function(docs){
+        const FinalArr = []
+        for(k = 0; k < docs.length; k++ ){
+            FinalArr.push
+            ({
+                manufacturerID:docs[k].ManufacturerID,
+                yellow:docs[k].ManufacturerInfoModel.y,
+                green:docs[k].ManufacturerInfoModel.g,
+                red:docs[k].ManufacturerInfoModel.r,
+                blue:docs[k].ManufacturerInfoModel.b,
+                white:docs[k].ManufacturerInfoModel.w
+            }) 
+        }
+        return FinalArr
+            // 
+
+    },
     randomIntIncluded: function(min, max){
         return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+    createNewManufacturerInfoModel: function(someObject){
+        var ManufacturerPayload = {
+            r:someObject.balls.r,
+            w:someObject.balls.w,
+            y:someObject.balls.y,
+            g:someObject.balls.g,
+            b:someObject.balls.b
+        }
+        const ManufacturerInfo = new ManufacterModel({
+            ManufacturerID: someObject.manufacturerID,
+            _id: new mongoose.Types.ObjectId(),
+            ManufacturerInfoModel: ManufacturerPayload
+
+        })
+        ManufacturerInfo.save().then(result =>{
+            console.log(result)
+        })
+
     },
     randomiseTemp: function(valArr){
 
@@ -108,18 +145,39 @@ module.exports = {
         });
         return arr
     },
-    replaceActive: function (object){
-        BallsPlaceModel.findById(object._id)
+    replaceInfoManufacturer: function (objectToUpdate, whatToReplace, Data){
+        ManufacterModel.findById(objectToUpdate.id)
         .exec()
         .then(doc => {
-            if (doc.active != true){
-                doc.active = true
+            if(whatToReplace === "Data"){
+                doc.ManufacturerInfoModel = {
+                    r:Data.balls.r,
+                    w:Data.balls.w,
+                    y:Data.balls.y,
+                    g:Data.balls.g,
+                    b:Data.balls.b
+                }
+                doc.save()
+            }
+            return
+            })
 
-        }
-            doc.save()
-    })
-
-    },
+        },
+        replaceInfo: function (objectToUpdate, whatToReplace, Data){
+            BallsPlaceModel.findById(objectToUpdate.id)
+            .exec()
+            .then(doc => {
+                if (whatToReplace === "Active"){
+                    if (doc.active != true){
+                        doc.active = true
+    
+                        }
+                     doc.save()
+                    }
+                return
+                })
+    
+            },
 
 
     makeAllFalse: function (){
@@ -132,46 +190,49 @@ module.exports = {
         [  
         {  
             "Place":0,
-            "Color":object.firstPlace
+            "Color":object.temp.firstPlace
         },
         {  
             "Place":1,
-            "Color":object.secondPlace
+            "Color":object.temp.secondPlace
         },
         {  
             "Place":2,
-            "Color":object.thirdPlace
+            "Color":object.temp.thirdPlace
         }
         ],
         [  
         {  
             "Place":3,
-            "Color":object.fourthPlace
+            "Color":object.temp.fourthPlace
         },
         {  
             "Place":4,
-            "Color":object.fifthPlace
+            "Color":object.temp.fifthPlace
         },
         {  
             "Place":5,
-            "Color":object.sixthPlace
+            "Color":object.temp.sixthPlace
         }
         ],
         [  
         {  
             "Place":6,
-            "Color":object.seventhPlace
+            "Color":object.temp.seventhPlace
         },
         {  
             "Place":7,
-            "Color":object.eightsPlace
+            "Color":object.temp.eightsPlace
         },
         {  
             "Place":8,
-            "Color":object.ninethPlace
+            "Color":object.temp.ninethPlace
         }
         ]
     ]
     return(finalModel)
+    },
+    updateCurrentDoc: function(docs){
+
     }
 }
