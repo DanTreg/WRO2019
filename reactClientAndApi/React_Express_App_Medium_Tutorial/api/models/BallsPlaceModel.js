@@ -16,7 +16,6 @@ const modelTemp = {
 
 const ballPlaceSchema = mongoose.Schema({
    date: Date,
-   active: Boolean,
    _id: mongoose.Schema.Types.ObjectId,
    temp: modelTemp
 

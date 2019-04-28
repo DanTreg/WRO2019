@@ -1,9 +1,11 @@
 
-export function getBp(){
-    fetch("http://localhost:9000/read_json",{
+export function getAllBp(){
+    return fetch("http://localhost:9000/requestsForApi",{
         method:'GET'
     })
-        .then(res => {return(res)});
+    .then(res => {
+        return(res.json())
+    });
 };
 
 

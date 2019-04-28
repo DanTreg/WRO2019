@@ -1,5 +1,6 @@
 import React, {Component} from "react"
 import * as CallApi from '../CallApi.js'
+import { Button } from 'reactstrap'
 class Header extends Component{
     
     handleClick(){
@@ -10,9 +11,9 @@ class Header extends Component{
     render(){
         return(
             <div className="header">
-                <button onClick={this.handleClick} className="button-header">create new bp</button>
-                <button className="button-header">About</button>
-                <button className="button-header">Coontent</button>
+                <Button color="secondary" onClick={this.handleClick} className="button-header">create new bp</Button>
+                <Button className="button-header">About</Button>
+                <Button className="button-header">Coontent</Button>
             </div>
         )
     }

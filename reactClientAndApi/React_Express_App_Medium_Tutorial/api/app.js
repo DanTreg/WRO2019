@@ -12,6 +12,7 @@ var usersRouter = require("./routes/users");
 var testAPIRouter = require("./routes/testAPI");
 var readJsonRouter = require("./routes/read_json");
 var pushAvBallsRouter = require("./routes/pushAvaillable_balls")
+var requestsForApiRouter = require("./routes/forApi.js")
 const mongoose = require("mongoose")
 
 var app = express();
@@ -31,6 +32,7 @@ app.use("/users", usersRouter);
 app.use("/testAPI", testAPIRouter);
 app.use("/read_json", readJsonRouter);
 app.use("/pushAvaillable_balls", pushAvBallsRouter);
+app.use("/requestsForApi", requestsForApiRouter)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));

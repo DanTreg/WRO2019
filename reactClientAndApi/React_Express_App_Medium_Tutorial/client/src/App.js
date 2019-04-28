@@ -24,7 +24,7 @@ class App extends Component {
     return(
       <div>
         <Header/>
-        <Body props={this.state.apiResponse} />
+        <Body />
         <Footer/>
       </div>
     )
