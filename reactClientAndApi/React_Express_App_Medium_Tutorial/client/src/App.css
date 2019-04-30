@@ -3,10 +3,12 @@ html, body{
 }
 .header{
   padding: 12px;
-  background: #505050;
+  background: #ffffff;
   color: white;
   font-size: 12px;
-  border-top: 20px solid #7a7a7a
+}
+.BallsTableTd{
+  width: 15%;
 }
 .top-body {
   height: 70vh;
@@ -32,6 +34,13 @@ html, body{
   outline: none;
   border: none;
 }
+.ResearchDiv{
+  width: 30%;
+  border: 1px solid blue;
+  height:100%;
+  overflow: auto;
+  word-wrap: break-word;
+}
 .footer{
   position: absolute;
   bottom: 0;
@@ -39,4 +48,16 @@ html, body{
   background: #b3b3b3;
   color: white;
   text-align: center
+}
+
+.table-balls{
+ width:50% !important;
+ text-align: center;
+ margin:5% 10% 5% 10%;
+}
+.circle {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
 }
