@@ -9,10 +9,10 @@ html, body{
 }
 .BallsTableTd{
   width: 15%;
+  text-align: center;
 }
 .top-body {
   height: 70vh;
-  border: 1px solid red
 };
 .button-header {
   background-color: #505050;
@@ -36,7 +36,6 @@ html, body{
 }
 .ResearchDiv{
   width: 30%;
-  border: 1px solid blue;
   height:100%;
   overflow: auto;
   word-wrap: break-word;
@@ -50,14 +49,26 @@ html, body{
   text-align: center
 }
 
-.table-balls{
+.table-balls-innactive{
+ border:1px solid black;
  width:50% !important;
  text-align: center;
  margin:5% 10% 5% 10%;
+}
+.table-balls-active{
+  border:1px solid black;
+  margin:5% 10% 5% 10%;
+  width:70% !important;
+  height: 15%;
 }
 .circle {
   height: 25px;
   width: 25px;
   border-radius: 50%;
   display: inline-block;
+}
+.SettingsResearch{
+  margin: 5%;
+  margin-top: 0;
+  margin-bottom: 5%
 }

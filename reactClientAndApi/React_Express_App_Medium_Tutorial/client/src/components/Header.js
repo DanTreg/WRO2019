@@ -1,8 +1,5 @@
 import React, {Component} from "react"
-import * as CallApi from '../CallApi.js'
 import {
-    ButtonGroup,
-    Button,
     Collapse,
     Navbar,
     NavbarToggler,
@@ -10,22 +7,17 @@ import {
     Nav,
     NavItem,
     NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem } from 'reactstrap';
+     } from 'reactstrap';
   
 class Header extends Component{
     constructor(){
         super()
+        this.toggleNavbar = this.toggleNavbar.bind(this);
         this.state = {
-            isOpen: false
+            collapsed: true
         };
     }
-    handleClick(){
-        console.log("I was clicked")
-        CallApi.createNewBp()
-    }
+    
     toggleNavbar() {
         this.setState({
           collapsed: !this.state.collapsed
@@ -35,41 +27,19 @@ class Header extends Component{
     render(){
         return(
             <div className="header">
-                {/* 
-                <Button className="button-header">About</Button>
-                <Button className="button-header">Coontent</Button> */}
-                <Navbar color="#ffffff" light expand="md">
-                    <NavbarBrand href="/">RoboMarket</NavbarBrand>
-                    <NavbarToggler onClick={this.toggle} />
-                    <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav tabs className="ml-auto" navbar>
-                            <ButtonGroup>
-                                <NavItem>
-                                    <Button onClick={this.handleClick}>CreatenewBP</Button>
-                                </NavItem>
-
-                                <UncontrolledDropdown outline >
-                                    <DropdownToggle caret >
-                                        Options
-                                    </DropdownToggle>
-                                    <DropdownMenu right>
-                                        <DropdownItem>
-                                            Option 1
-                                        </DropdownItem>
-                                        <DropdownItem>
-                                            Option 2
-                                        </DropdownItem>
-                                        <DropdownItem divider />
-                                        <DropdownItem>
-                                            Reset
-                                        </DropdownItem>
-                                    </DropdownMenu>
-                                </UncontrolledDropdown>
-                            </ButtonGroup>
-                        </Nav>
-                    </Collapse>
-                </Navbar>
+            <Navbar color="faded" light>
+                <NavbarBrand href="/" className="mr-auto">RoboMarket</NavbarBrand>
+                <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
+                <Collapse isOpen={!this.state.collapsed} navbar>
+                    <Nav navbar>
+                        <NavItem>
+                            <NavLink href="https://github.com/DanTreg/WRO2019" target="_blank" >GitHub</NavLink>
+                        </NavItem>
+                    </Nav>
+                </Collapse>
+            </Navbar>
             </div>
+ 
         )
     }
 }

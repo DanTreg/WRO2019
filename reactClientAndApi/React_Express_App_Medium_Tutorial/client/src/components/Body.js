@@ -8,6 +8,7 @@ class Body extends Component{
         return (
         <div>
           <Top />
+          <hr/>
           <Bottom />  
         </div>
         );

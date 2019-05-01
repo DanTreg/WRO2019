@@ -9,16 +9,16 @@ export function getAllBp(){
 };
 
 
-export function createNewBp(){
+export function createNewBp(object){
     fetch("http://localhost:9000/read_json",{
         method:'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-            r:true,
-            g:true,
-            w:true,
-            y:false,
-            b:false
+            r:object.Red,
+            g:object.Green,
+            w:object.White,
+            y:object.Yellow,
+            b:object.Blue
         })
     })
         .then(res => {return(res)});

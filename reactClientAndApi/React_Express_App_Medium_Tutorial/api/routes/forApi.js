@@ -10,7 +10,8 @@ router.get("/", function(req, res){
     BallsPlaceModel.find()
     .exec()
     .then(docs => {
-        res.json(docs)
+        var sortedByDate= _.sortBy(docs, "date").reverse()
+        res.json(sortedByDate)
     })
 })
 
