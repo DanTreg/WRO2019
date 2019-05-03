@@ -49,8 +49,22 @@ class Research extends Component{
 
     handleSubmit(){
         CallApi.createNewBp(this.state.colorsToSubmit)
+        this.setState(prevState =>({
+            colorsToSubmit:{
+                Red: false,
+                White: false,
+                Blue: false,
+                Yellow:false,
+                Green:false
+            },
+            modal:prevState.modal,
+            BallsModel:prevState.BallsModel,
+            isLoadindg: prevState.isLoadindg,
+        }))
         this.toggle()
-        this.fetchApi()
+        setTimeout(this.fetchApi(), 10000)
+        
+        
     }
 
     toggle() {

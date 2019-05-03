@@ -8,6 +8,14 @@ export function getAllBp(){
     });
 };
 
+export function getAllBpCarStatus(){
+    return fetch("http://localhost:9000/RoadStatus",{
+        method:'GET'
+    })
+    .then(res =>{
+        return(res.json())
+    })
+}
 
 export function createNewBp(object){
     fetch("http://localhost:9000/read_json",{

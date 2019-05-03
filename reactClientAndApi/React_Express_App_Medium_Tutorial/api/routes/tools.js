@@ -1,6 +1,7 @@
 const filename = '../models/BallsPlaceModel'
 const BallsPlaceModel = require(filename)
 const ManufacterModel = require("../models/ManufacterModel")
+const RoadStatusModel = require("../models/RoadStatusModel")
 const mongoose = require("mongoose")
 const _ = require("lodash")
 const Enums = require("../models/Enums.js")
@@ -133,7 +134,17 @@ module.exports = {
         //    var firstItem = valArr[Math.floor(Math.random()*valArr.length)];
         //    var amountOfFirstItem = randomIntIncluded(1, neededAmount - amountCollors)
         //}
+    createNewRoadStatusModel: function(object){
+        const RoadStatus = new RoadStatusModel({
+            CarID: object.CarID,
+            _id: new mongoose.Types.ObjectId(),
+            CarStatus: object.CarStatus
 
+        })
+        RoadStatus.save().then(result =>{
+            console.log(result)
+        })
+    },
     leaveOnlyVallible: function(object){
         var arr = []
         _.mapValues(object, (value, key, object) => {
@@ -163,21 +174,32 @@ module.exports = {
             })
 
         },
-        replaceInfo: function (objectToUpdate, whatToReplace, Data){
-            BallsPlaceModel.findById(objectToUpdate.id)
-            .exec()
-            .then(doc => {
-                if (whatToReplace === "Active"){
-                    if (doc.active != true){
-                        doc.active = true
-    
-                        }
-                     doc.save()
+    replaceStatus: function(objectToUpdate, Data){
+        RoadStatusModel.findById(objectToUpdate.id)
+        .exec()
+        .then(doc => {
+            if (RoadStatusModel.CarStatus !== Data.CarStatus){
+                doc.CarStatus = Data.CarStatus
+                doc.save()
+            }
+            return
+        })
+    },
+    replaceInfo: function (objectToUpdate, whatToReplace, Data){
+        BallsPlaceModel.findById(objectToUpdate.id)
+        .exec()
+        .then(doc => {
+            if (whatToReplace === "Active"){
+                if (doc.active != true){
+                    doc.active = true
+
                     }
-                return
-                })
-    
-            },
+                    doc.save()
+                }
+            return
+            })
+
+    },
 
 
     makeAllFalse: function (){
@@ -232,7 +254,4 @@ module.exports = {
     ]
     return(finalModel)
     },
-    updateCurrentDoc: function(docs){
-
-    }
 }
