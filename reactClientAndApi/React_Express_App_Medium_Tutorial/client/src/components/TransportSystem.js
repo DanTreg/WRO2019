@@ -3,6 +3,8 @@ import * as CallApi from "../CallApi.js"
 import {Spinner, Container, Row, Col} from "reactstrap"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CanvasJSReact from '../canvasjs.react';
+
+
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 class TransportSystem extends Component{
@@ -40,7 +42,7 @@ class TransportSystem extends Component{
             )
         }
         return (
-        <div className="TransportSystem">
+        <Container className="TransportSystem">
                 {   
                     this.state.CarStatus.map((object, i) =>{
                         const options = {
@@ -65,7 +67,7 @@ class TransportSystem extends Component{
                             <Container>
                                 <Row>
                                     <Col>
-                                        <h3 style={{marginTop:"1%"}}>Truck number:{object.CarID}</h3>
+                                        <h3 style={{marginTop:"1%",borderBottom:"1px solid rgb(79, 168, 70)"}}>Truck number:{object.CarID}</h3>
                                     </Col>
                                 </Row>
                                 <Row>
@@ -101,7 +103,7 @@ class TransportSystem extends Component{
             
             {/* <FontAwesomeIcon className="TransportIcons" icon= {"shipping-fast"} size="7x" color="#28a745" /><br/>
             <FontAwesomeIcon className="TransportIcons"icon= {"shipping-fast"} size="7x" color="#28a745" /> */}
-        </div>
+        </Container>
 
         )
     }

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { Container, Row, Col } from 'reactstrap';
 class FactoryStaus extends Component{
     render(){
         return (
-        <div className="FactoryStatus">
+        <Container className="FactoryStatus">
+            <Row>
             yeah
-        </div>
+            </Row>
+        </Container>
         )
     }
 }

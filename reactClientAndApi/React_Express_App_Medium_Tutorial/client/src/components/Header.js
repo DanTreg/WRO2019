@@ -6,8 +6,9 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
+    NavLink,Container, Row, Col
      } from 'reactstrap';
+
   
 class Header extends Component{
     constructor(){
@@ -26,19 +27,23 @@ class Header extends Component{
     
     render(){
         return(
-            <div className="header">
-            <Navbar color="faded" light>
-                <NavbarBrand href="/" className="mr-auto">RoboMarket</NavbarBrand>
-                <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-                <Collapse isOpen={!this.state.collapsed} navbar>
-                    <Nav navbar>
-                        <NavItem>
-                            <NavLink href="https://github.com/DanTreg/WRO2019" target="_blank" >GitHub</NavLink>
-                        </NavItem>
-                    </Nav>
-                </Collapse>
-            </Navbar>
-            </div>
+            <Container fluid={true} className="header">
+                <Row>
+                    <Col>
+                        <Navbar color="faded" light>
+                            <NavbarBrand href="/" className="mr-auto">RoboMarket</NavbarBrand>
+                            <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
+                            <Collapse isOpen={!this.state.collapsed} navbar>
+                                <Nav navbar>
+                                    <NavItem>
+                                        <NavLink href="https://github.com/DanTreg/WRO2019" target="_blank" >GitHub</NavLink>
+                                    </NavItem>
+                                </Nav>
+                            </Collapse>
+                        </Navbar>
+                    </Col>
+                </Row>
+            </Container>
  
         )
     }

@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-
+import { Container, Row, Col } from 'reactstrap';
 import Top from "./Top.js"
 import Bottom from "./Bottom.js"
 
 class Body extends Component{
     render(){
         return (
-        <div>
-          <Top />
+        <Container fluid={true} className="main-top">
+          <Row>
+            <Top />
+          </Row>
           <hr/>
-          <Bottom />  
-        </div>
+          <Row>
+            <Bottom />
+          </Row>
+        </Container>
         );
     }
 }

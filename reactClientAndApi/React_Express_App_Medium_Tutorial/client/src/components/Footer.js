@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { Container, Row, Col } from 'reactstrap';
 
 class Footer extends Component{
     render(){
         return(
-            <div className="footer">
-                <h3>this is footer</h3>
-            </div>
+            <Container fluid={true} className="footer">
+            <Row>
+                <Col><h3>this is footer</h3></Col>
+            </Row>
+            </Container>
         )
     }
 }

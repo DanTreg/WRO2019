@@ -2,6 +2,8 @@ import React, {Component} from "react"
 import * as CallApi from "../CallApi.js"
 import { ButtonGroup, Button, CustomInput, Form, FormGroup, Spinner, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
 import BallsPlaces from "./BallsPlaces"
+import { Container, Row, Col } from 'reactstrap';
+import classNames from 'classnames';
 class Research extends Component{
     constructor(){
         super()
@@ -102,15 +104,15 @@ class Research extends Component{
     render(){
         if(this.state.isLoadindg === true){
             return(
-                <div className= "ResearchDiv">
+                <Container className="ResearchDiv">
                     <Spinner color = "secondary"/>
                     <h3>Content is currently loading...</h3>
-                </div>
+                </Container>
             )
         }
         else{
             return(
-                <div className = "ResearchDiv">
+                <Container className = "ResearchDiv">
                     <ButtonGroup className="SettingsResearch">
                         <Button color="success" onClick={this.fetchApi}>Update</Button>
                         <Button color="success" onClick={this.toggle}>Create New Product</Button>
@@ -164,7 +166,7 @@ class Research extends Component{
                             </ModalFooter>
                         </Form>
                     </Modal>
-                </div>
+                </Container>
             )
         }
         
