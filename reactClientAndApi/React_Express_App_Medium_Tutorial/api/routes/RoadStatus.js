@@ -26,7 +26,7 @@ router.post("/",  function(req, res){
                 var test = typeof docs[indexToChange]
                 if (test !== "undefined"){    
                     if (docs[indexToChange].CarID === req.body.CarID  ){
-                        tools.replaceStatus(docs[indexToChange], req.body)
+                        tools.replaceStatus(docs[indexToChange], req.body, "RoadStatus")
                         res.status(200).send()
                     }
                     else{

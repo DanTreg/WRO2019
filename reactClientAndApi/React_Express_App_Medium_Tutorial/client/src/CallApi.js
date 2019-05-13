@@ -16,9 +16,16 @@ export function getAllBpCarStatus(){
         return(res.json())
     })
 }
-
+export function getAllBpFactoryStatus() {
+    return fetch("http://localhost:9000/FactoryStatus", {
+        method: 'GET'
+    })
+        .then(res => {
+            return (res.json())
+        })
+}
 export function createNewBp(object){
-    fetch("http://localhost:9000/read_json",{
+    fetch("http://localhost:9000/BallPlacesApi",{
         method:'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({

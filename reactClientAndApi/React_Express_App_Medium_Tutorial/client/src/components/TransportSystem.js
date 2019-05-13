@@ -17,7 +17,7 @@ class TransportSystem extends Component{
     fetchAPI(){
         this.setState(prevState => ({
             isLoading:!prevState.isLoading,
-            CarStatus:prevState
+            CarStatus:prevState.CarStatus
         }))
         CallApi.getAllBpCarStatus().then(result =>{
             this.setState(prevState =>({

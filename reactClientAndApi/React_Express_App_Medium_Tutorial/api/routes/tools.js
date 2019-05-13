@@ -1,11 +1,11 @@
-const filename = '../models/BallsPlaceModel'
-const BallsPlaceModel = require(filename)
+const BallsPlaceModel = require('../models/BallsPlaceModel')
 const ManufacterModel = require("../models/ManufacterModel")
 const RoadStatusModel = require("../models/RoadStatusModel")
+const FactoryStatusModel = require("../models/FactoryStatusModel")
 const mongoose = require("mongoose")
 const _ = require("lodash")
 const Enums = require("../models/Enums.js")
-
+const fetch = require('node-fetch')
 function covertArrToModel(arr){
     var finalObjectToReturn = { 
         firstPlace: arr[0],
@@ -26,6 +26,53 @@ function randomIntIncluded(min, max){
 }
 
 module.exports = {
+    countNeededBalls: function(manufacturerModel, activeBallPlace){
+        finalObj = []
+        var randomManufacturer = randomIntIncluded(1, manufacturerModel.length)
+        manufacturerModel.forEach(manufacturer => {
+            var countObj = {
+                manufacturerID: manufacturer.ManufacturerID,
+                red: 0,
+                yellow:0,
+                green: 0,
+                blue: 0,
+                white:0
+            }
+            activeBallPlace.forEach(row => {
+                row.forEach(place =>{
+                    if (place.Color === 1 && manufacturer.ManufacturerID === 1){
+                        countObj.red ++
+                    }
+                    if (place.Color === 2){
+                        if (manufacturer.ManufacturerID === randomManufacturer){
+                            countObj.white ++
+                        }
+                    }
+                    if (place.Color === 3 && manufacturer.ManufacturerID === 2){
+                        countObj.yellow ++
+                    }
+                    if (place.Color === 4 && manufacturer.ManufacturerID === 1){
+                        countObj.green ++
+                    }
+                    if (place.Color === 5 && manufacturer.ManufacturerID === 2){
+                        countObj.blue ++
+                    }
+
+                })
+            })
+            finalObj.push(countObj)
+        })
+        return finalObj
+
+    },
+    getActiveBallPlace: function(){
+        return fetch("http://localhost:9000/BallPlacesApi", {
+            method: 'GET'
+        })
+        .then(res => {
+            return (res.json())
+        })
+    },
     activeAllFalse: function(docs){
 
         
@@ -138,13 +185,25 @@ module.exports = {
         const RoadStatus = new RoadStatusModel({
             CarID: object.CarID,
             _id: new mongoose.Types.ObjectId(),
-            CarStatus: object.CarStatus
-
+            CarStatus: object.CarStatus,
+            date: new Date()
         })
         RoadStatus.save().then(result =>{
             console.log(result)
         })
     },
+    createNewFactoryStatusModel: function (object){
+        const FactoryStatus = new FactoryStatusModel({
+            FactoryID: object.FactoryID,
+            _id: new mongoose.Types.ObjectId(),
+            FactoryStatus: object.FactoryStatus,
+            date: new Date()
+        })
+        FactoryStatus.save().then(result =>{
+            console.log(result)
+        })
+    },
+
     leaveOnlyVallible: function(object){
         var arr = []
         _.mapValues(object, (value, key, object) => {
@@ -174,16 +233,32 @@ module.exports = {
             })
 
         },
-    replaceStatus: function(objectToUpdate, Data){
-        RoadStatusModel.findById(objectToUpdate.id)
-        .exec()
-        .then(doc => {
-            if (RoadStatusModel.CarStatus !== Data.CarStatus){
-                doc.CarStatus = Data.CarStatus
+    replaceStatus: function(objectToUpdate, Data, whatToReplace){
+        if(whatToReplace === "RoadStatus"){
+            RoadStatusModel.findById(objectToUpdate.id)
+            .exec()
+            .then(doc => {
+                if (doc.CarStatus !== Data.CarStatus){
+                    doc.CarStatus = Data.CarStatus
+                    doc.date = new Date()
+                    doc.save()
+                }
+                return
+            })
+        }
+        if(whatToReplace === "FactoryStatus"){
+            FactoryStatusModel.findById(objectToUpdate.id)
+            .exec()
+            .then(doc => {
+                if (doc.FactoryStatus !== Data.FactoryStatus){
+                    doc.FactoryStatus = Data.FactoryStatus
+                    doc.date = new Date()
+                }
+ 
                 doc.save()
-            }
-            return
-        })
+                return 
+            })
+        }
     },
     replaceInfo: function (objectToUpdate, whatToReplace, Data){
         BallsPlaceModel.findById(objectToUpdate.id)

@@ -30,6 +30,7 @@ class Research extends Component{
             BallsModel: prevState.BallsModel,
             isLoadindg:true,
         }))
+        console.log("we are in fetch api")
         CallApi.getAllBp().then((result)=>{
             console.log(result)
             this.setState(prevState =>({
@@ -62,8 +63,7 @@ class Research extends Component{
             isLoadindg: prevState.isLoadindg,
         }))
         this.toggle()
-        setTimeout(this.fetchApi(), 10000)
-        
+        setTimeout(this.fetchApi, 1000)
         
     }
 
