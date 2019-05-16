@@ -28,7 +28,7 @@ function randomIntIncluded(min, max){
 module.exports = {
     countNeededBalls: function(manufacturerModel, activeBallPlace){
         finalObj = []
-        var randomManufacturer = randomIntIncluded(1, manufacturerModel.length)
+        var randomManufacturer = 2
         manufacturerModel.forEach(manufacturer => {
             var countObj = {
                 manufacturerID: manufacturer.ManufacturerID,
