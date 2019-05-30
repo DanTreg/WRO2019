@@ -11,7 +11,7 @@ class BlockChain extends Component{
         }
         this.fetchAPI = this.fetchAPI.bind(this)
     }
-    fetchAPI() {
+    async fetchAPI() {
         this.setState(prevState => ({
             isLoading: !prevState.isLoading,
             BlockChain: prevState.FactoryStatus
@@ -24,8 +24,10 @@ class BlockChain extends Component{
         })
     
     }
+    
     componentDidMount() {
         this.fetchAPI()
+        setInterval(this.fetchAPI, 10000)
     }
     render(){
         if(this.state.isLoading === true){
