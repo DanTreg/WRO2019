@@ -16,8 +16,8 @@ export function getAllBpCarStatus(){
         return(res.json())
     })
 }
-export function getAllBpFactoryStatus() {
-    return fetch("http://localhost:9000/FactoryStatus", {
+export function getAllBlockChain() {
+    return fetch("http://localhost:9000/createTranspContract", {
         method: 'GET'
     })
         .then(res => {

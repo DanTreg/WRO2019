@@ -16,6 +16,7 @@ var requestsForApiRouter = require("./routes/forApi.js")
 var RoadStatusRouter = require("./routes/RoadStatus.js")
 var FactoryStatusRouter = require("./routes/FactoryStatus.js")
 var getBallForCarsRouter = require("./routes/getBallsForCars.js")
+var CreateNewTransportationContract = require("./routes/CreateNewTransportationContract.js")
 const mongoose = require("mongoose")
 
 var app = express();
@@ -41,6 +42,7 @@ app.use("/requestsForApi", requestsForApiRouter);
 app.use("/RoadStatus", RoadStatusRouter);
 app.use("/FactoryStatus", FactoryStatusRouter);
 app.use("/getBallForCars", getBallForCarsRouter)
+app.use("/createTranspContract", CreateNewTransportationContract)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));
@@ -60,7 +62,7 @@ app.use(function(err, req, res, next) {
 
 
 // replace the uri string with your connection string.
-const uri = "mongodb://localhost:27017/SmartEconomics?retryWrites=true"
-//const uri = "mongodb+srv://dbUser:admin@cluster0-lwiij.azure.mongodb.net/test?retryWrites=true"
+//const uri = "mongodb://localhost:27017/SmartEconomics?retryWrites=true"
+const uri = "mongodb+srv://dbUser:admin@cluster0-lwiij.azure.mongodb.net/test?retryWrites=true"
 mongoose.connect(uri,{ useNewUrlParser: true })
 module.exports = app;

@@ -73,11 +73,17 @@ html, body{
   border-radius: 50%;
   display: inline-block;
 }
+.hash{
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+}
 .FactoryStatus{
   float: left;
   width: 30%;
   height:100%;
   word-wrap: break-word;
+  overflow-y:auto; 
 }
 .TransportSystem{
   float: left;

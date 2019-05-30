@@ -26,6 +26,14 @@ function randomIntIncluded(min, max){
 }
 
 module.exports = {
+    fetchGetBallForCars: function (){
+        return fetch("http://localhost:9000/getBallForCars", {
+            method: 'GET'
+        })
+        .then(res => {
+            return (res.json())
+        })
+    },
     countNeededBalls: function(manufacturerModel, activeBallPlace){
         finalObj = []
         var randomManufacturer = 2

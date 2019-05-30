@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Research from "./Research.js"
 import TransportSystem from "./TransportSystem.js"
-import FactoryStatus from "./FactoryStatus.js"
+import BlockChain from "./BlockChain.js"
 class Top extends Component{
     render(){
         return (
@@ -9,7 +9,7 @@ class Top extends Component{
             <Research />
             
             <TransportSystem />
-            <FactoryStatus/>
+            <BlockChain/>
         </div>
         )
     }
