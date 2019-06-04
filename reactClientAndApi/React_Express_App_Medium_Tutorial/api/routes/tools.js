@@ -27,7 +27,7 @@ function randomIntIncluded(min, max){
 
 module.exports = {
     fetchGetBallForCars: function (){
-        return fetch("http://localhost:9000/getBallForCars", {
+        return fetch("http://wro2019_api.therdteam.com/getBallForCars", {
             method: 'GET'
         })
         .then(res => {
@@ -74,7 +74,7 @@ module.exports = {
 
     },
     getActiveBallPlace: function(){
-        return fetch("http://localhost:9000/BallPlacesApi", {
+        return fetch("http://wro2019_api.therdteam.com/BallPlacesApi", {
             method: 'GET'
         })
         .then(res => {

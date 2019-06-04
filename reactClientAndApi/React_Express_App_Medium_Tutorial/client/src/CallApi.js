@@ -1,6 +1,6 @@
 
 export function getAllBp(){
-    return fetch("http://localhost:9000/requestsForApi",{
+    return fetch("http://wro2019_api.therdteam.com/requestsForApi", {
         method:'GET'
     })
     .then(res => {
@@ -9,7 +9,7 @@ export function getAllBp(){
 };
 
 export function getAllBpCarStatus(){
-    return fetch("http://localhost:9000/RoadStatus",{
+    return fetch("http://wro2019_api.therdteam.com/RoadStatus", {
         method:'GET'
     })
     .then(res =>{
@@ -17,7 +17,7 @@ export function getAllBpCarStatus(){
     })
 }
 export function getAllBlockChain() {
-    return fetch("http://localhost:9000/createTranspContract", {
+    return fetch("http://wro2019_api.therdteam.com/createTranspContract", {
         method: 'GET'
     })
         .then(res => {
@@ -25,7 +25,7 @@ export function getAllBlockChain() {
         })
 }
 export function createNewBp(object){
-    fetch("http://localhost:9000/BallPlacesApi",{
+    fetch("http://wro2019_api.therdteam.com/BallPlacesApi", {
         method:'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
