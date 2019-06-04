@@ -4,6 +4,7 @@ class Footer extends Component{
     render(){
         return(
             <div className="footer">
+                1232131
             </div>
         )
     }
