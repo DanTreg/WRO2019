@@ -11,7 +11,7 @@ class BlockChain extends Component{
         }
         this.fetchAPI = this.fetchAPI.bind(this)
     }
-    async fetchAPI() {
+    fetchAPI() {
         this.setState(prevState => ({
             isLoading: !prevState.isLoading,
             BlockChain: prevState.FactoryStatus

@@ -4,7 +4,7 @@ class Bottom extends Component{
     render(){
         return(
         <div>
-            This is Bottom
+
         </div>
         )}
 }

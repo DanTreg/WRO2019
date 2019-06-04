@@ -64,7 +64,8 @@ router.get('/', function(req,res){
     BlockChainBlockModel.find()
     .exec()
     .then(docs => {
-        res.json(docs)
+        sorted = _.sortBy(docs, "index").reverse()
+        res.json(sorted)
     })
 })
 module.exports = router
