@@ -7,7 +7,7 @@ class BlockChainBlock extends React.Component {
         return(
             <tr>
                 <td scope="row">{this.props.block.index}</td>
-                <td>{(this.props.block.contractType == 0) ? "Transportation contract" : "Manufacturer contract"}</td>
+                <td>{(this.props.block.contractType === 0) ? "Transportation contract" : "Manufacturer contract"}</td>
                 <td></td>
                 <td className="hash">{this.props.block.hash}</td>
             </tr>
