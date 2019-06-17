@@ -45,7 +45,6 @@ class BlockChain extends Component{
                     <tr>
                         <th>Block Number</th>
                         <th>Contract type</th>
-                        <th>Contract info</th>
                         <th>Hash</th>
                     </tr>
                 </thead>

@@ -7,7 +7,23 @@ export function getAllBp(){
         return(res.json())
     });
 };
-
+export function postNewBlockchainBlock(isManufContract) {
+    return fetch("http://wro2019_api.therdteam.com/createTranspContract", {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                "transpContract": {
+                    "fastDelievery": 0,
+                    "RobotID": 0,
+                    "ManufacturerID": 0
+                },
+                "isManufContract": isManufContract
+            })
+        })
+        .then(res => {
+            return (res)
+        });
+};
 export function getAllBpCarStatus(){
     return fetch("http://wro2019_api.therdteam.com/RoadStatus", {
         method:'GET'

@@ -62,6 +62,7 @@ class Research extends Component{
             BallsModel:prevState.BallsModel,
             isLoadindg: prevState.isLoadindg,
         }))
+        CallApi.postNewBlockchainBlock(2)
         this.toggle()
         setTimeout(this.fetchApi, 1000)
         
