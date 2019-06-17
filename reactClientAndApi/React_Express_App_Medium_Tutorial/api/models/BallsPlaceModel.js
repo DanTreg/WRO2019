@@ -17,7 +17,8 @@ const modelTemp = {
 const ballPlaceSchema = mongoose.Schema({
    date: Date,
    _id: mongoose.Schema.Types.ObjectId,
-   temp: modelTemp
+   temp: modelTemp,
+   marketValue: Number
 
 })
 

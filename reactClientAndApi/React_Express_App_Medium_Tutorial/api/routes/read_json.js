@@ -19,7 +19,8 @@ router.post("/",  function(req, res){
     const BallsPlace = new BallsPlaceModel({
         _id: new mongoose.Types.ObjectId(),
         date : DateNow,
-        temp: tools.randomiseTemp(varArr) 
+        temp: tools.randomiseTemp(varArr),
+        marketValue: tools.randomIntIncluded(100000, 100000000)
     })
     BallsPlace.save().then(result =>{
         console.log(result)

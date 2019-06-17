@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Research from "./Research.js"
-import TransportSystem from "./TransportSystem.js"
+import PriceField from "./PriceField"
 import BlockChain from "./BlockChain.js"
 class Top extends Component{
     render(){
@@ -8,7 +8,7 @@ class Top extends Component{
         <div className = "top-body">
             <Research />
             
-            <TransportSystem />
+            <PriceField />
             <BlockChain/>
         </div>
         )

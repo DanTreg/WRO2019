@@ -155,6 +155,8 @@ class Research extends Component{
                                         <CustomInput type="switch" id="WhiteColorSwitch" name="White" onChange= {(e) => {
                                             this.handleChange(e)
                                         }} label={<span style={{backgroundColor : "grey"}} class="circle"></span>} />
+                                        <CustomInput type="switch" id="PurpleColorSwitch" name="Purple" label={<span style={{backgroundColor : "purple"}} class="circle"></span>} disabled />
+                                        <CustomInput type="switch" id="BlackeColorSwitch" name="Black" label={<span style={{backgroundColor : "black"}} class="circle"></span>} disabled />
                                     </div>
                                 </FormGroup>
                                 

@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
 import Top from "./Top.js"
-import Bottom from "./Bottom.js"
+import {IntlProvider} from 'react-intl';
 
 class Body extends Component{
     render(){
         return (
-        <div>
-          <Top />
-          <hr/>
-          <Bottom />  
-        </div>
+        <IntlProvider locale="en">
+          <div>
+            <Top /> 
+          </div>
+        </IntlProvider>
         );
     }
 }
