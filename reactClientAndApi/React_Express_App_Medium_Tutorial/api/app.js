@@ -62,7 +62,7 @@ app.use(function(err, req, res, next) {
 
 
 // replace the uri string with your connection string.
-const uri = "mongodb://localhost:27017/SmartEconomics?retryWrites=true"
-//const uri = "mongodb+srv://dbUser:admin@cluster0-lwiij.azure.mongodb.net/test?retryWrites=true"
+//const uri = "mongodb://localhost:27017/SmartEconomics?retryWrites=true"
+const uri = "mongodb+srv://dbUser:admin@cluster0-lwiij.azure.mongodb.net/test?retryWrites=true"
 mongoose.connect(uri,{ useNewUrlParser: true })
 module.exports = app;
